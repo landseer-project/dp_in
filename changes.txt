@@ -1,0 +1,3 @@
+docker build -t dp-intraining .
+
+ docker run -it --gpus all -v /share/landseer/img_align_celeba:/app/data/img_align_celeba -v /share/landseer/Improving-Fairness-in-Image-Classification-via-Sketching/face_image_classification\(CelebA\)/dataset/list_attr_celeba.csv:/app/data/list_attr_celeba.csv -v /share/landseer/DP_IN/output:/app/output --rm dp-intraining
