@@ -73,38 +73,6 @@ def train(model, train_loader, optimizer, criterion, epoch, device, privacy_engi
     return avg_loss, accuracy, epsilon
 
 
-# def train(model, train_loader, optimizer, criterion, epoch, device, privacy_engine=None):
-#     model.train()
-#     losses = []
-#     correct = 0
-#     total = 0
-    
-#     for images, labels in tqdm(train_loader, desc=f"Epoch {epoch}"):
-#         images, labels = images.to(device), labels.to(device)
-        
-#         optimizer.zero_grad()
-#         outputs = model(images)
-#         loss = criterion(outputs, labels)
-#         loss.backward()
-#         optimizer.step()
-        
-#         _, predicted = torch.max(outputs.data, 1)
-#         total += labels.size(0)
-#         correct += (predicted == labels).sum().item()
-#         losses.append(loss.item())
-    
-#     accuracy = 100 * correct / total
-#     avg_loss = np.mean(losses)
-    
-#     epsilon = None
-#     if privacy_engine:
-#         epsilon = privacy_engine.get_epsilon(args.delta)
-#         print(f"Train Loss: {avg_loss:.4f}, Accuracy: {accuracy:.2f}%, ε: {epsilon:.2f}")
-#     else:
-#         print(f"Train Loss: {avg_loss:.4f}, Accuracy: {accuracy:.2f}%")
-    
-#     return avg_loss, accuracy, epsilon
-
 def test(model, test_loader, device):
     model.eval()
     correct = 0
